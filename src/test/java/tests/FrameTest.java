@@ -5,29 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class FrameTest {
-
-    public WebDriver driver;
+public class FrameTest extends SharedData {
 
     @Test
     public void testMethod() {
-
-        //Deschidem o instanta de Chrome.
-
-        driver = new EdgeDriver();
-
-        //Accesam o pagina specifica.
-
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in modul maximize.
-
-        driver.manage().window().maximize();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         WebElement alertsFrameWindowsMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
         alertsFrameWindowsMenu.click();
@@ -50,8 +35,6 @@ public class FrameTest {
 
         WebElement secondBlockElement = driver.findElement(By.id("sampleHeading"));
         System.out.println(secondBlockElement.getText());
-
-        driver.quit();
     }
 }
 

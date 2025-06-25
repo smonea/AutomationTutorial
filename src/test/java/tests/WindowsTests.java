@@ -5,27 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowsTests {
-    public WebDriver driver;
+public class WindowsTests extends SharedData {
 
     @Test
     public void testMethod() {
-
-        //Deschidem o instanta de Chrome.
-
-        driver = new EdgeDriver();
-
-        //Accesam o pagina specifica.
-
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in modul maximize.
-
-        driver.manage().window().maximize();
 
         WebElement alertsFrameWindowsMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
         alertsFrameWindowsMenu.click();
@@ -67,9 +55,6 @@ public class WindowsTests {
         driver.switchTo().window(tabsList.get(0));
 
         System.out.println(driver.getCurrentUrl());
-
-        driver.quit();
-
     }
 }
 

@@ -8,26 +8,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.util.List;
 
-public class WebTablesTest {
-    public WebDriver driver;
+public class WebTablesTest extends SharedData {
 
     @Test
     public void testMethod(){
-
-        //Deschidem o instanta de Chrome.
-
-        driver=new EdgeDriver();
-
-        //Accesam o pagina specifica.
-
-        driver.get("https://demoqa.com");
-
-        //Facem browserul in modul maximize.
-
-        driver.manage().window().maximize();
 
         WebElement elementsMenu = driver.findElement(By.xpath("//h5[text()='Elements']"));
         elementsMenu.click();
@@ -139,9 +127,6 @@ public class WebTablesTest {
 
         tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         Assert.assertEquals(tableList.size(),tableSize, "Expected table size: "+tableSize+" is not correct");
-
-        driver.quit();
-
     }
 }
 

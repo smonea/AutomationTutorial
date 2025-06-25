@@ -5,11 +5,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v135.heapprofiler.model.SamplingHeapProfile;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.io.File;
 import java.time.Duration;
@@ -17,17 +19,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeFormTest {
-
-    public WebDriver driver;
+public class PracticeFormTest extends SharedData {
 
     @Test
 
     public void testMethodd(){
-
-        driver = new EdgeDriver();
-        driver.get("https://demoqa.com");
-        driver.manage().window().maximize();
 
         WebElement formsMenu = driver.findElement(By.xpath("//h5[text()='Forms']"));
         formsMenu.click();
@@ -152,8 +148,6 @@ public class PracticeFormTest {
         Assert.assertEquals(tableDescriptionList.get(9).getText(),"State and City","State and City text is not displayed right in the table");
         Assert.assertTrue(tableValueList.get(9).getText().contains(stateValue),"State is not displayed right in the table");
         Assert.assertTrue(tableValueList.get(9).getText().contains(cityValue), "City is not displayed right in the table");
-
-        driver.quit();
     }
 }
 
