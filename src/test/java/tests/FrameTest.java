@@ -1,5 +1,7 @@
 package tests;
 
+import helperMethods.ElementHelper;
+import helperMethods.FrameHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,13 +16,16 @@ public class FrameTest extends SharedData {
     @Test
     public void testMethod() {
 
+        ElementHelper elementHelper = new ElementHelper(driver);
+        FrameHelper frameHelper = new FrameHelper(driver);
+
         WebElement alertsFrameWindowsMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        alertsFrameWindowsMenu.click();
+        elementHelper.clickElement(alertsFrameWindowsMenu);
 
         WebElement framesMenu = driver.findElement(By.xpath("//span[text()='Frames']"));
-        framesMenu.click();
+        elementHelper.clickElement(framesMenu);
 
-        driver.switchTo().frame("frame1");
+        frameHelper.switchFrame("frame1");
 
         //Alta varianta pentru frame1
 
@@ -29,9 +34,9 @@ public class FrameTest extends SharedData {
         WebElement firstBlockElement = driver.findElement(By.id("sampleHeading"));
         System.out.println(firstBlockElement.getText());
 
-        driver.switchTo().parentFrame();
+        frameHelper.switchParent();
 
-        driver.switchTo().frame("frame2");
+        frameHelper.switchFrame("frame2");
 
         WebElement secondBlockElement = driver.findElement(By.id("sampleHeading"));
         System.out.println(secondBlockElement.getText());

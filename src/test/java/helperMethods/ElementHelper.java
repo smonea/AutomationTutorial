@@ -19,4 +19,9 @@ public class ElementHelper {
     public void clickElement(WebElement element){
         element.click();
     }
+
+    public void closeElement(){
+        driver.close();
+    }
+
 }

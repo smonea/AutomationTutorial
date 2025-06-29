@@ -1,5 +1,7 @@
 package tests;
 
+import helperMethods.ElementHelper;
+import helperMethods.WindowsHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,27 +17,29 @@ public class WindowsTests extends SharedData {
     @Test
     public void testMethod() {
 
+        ElementHelper elementHelper = new ElementHelper(driver);
+        WindowsHelper windowsHelper = new WindowsHelper(driver);
+
         WebElement alertsFrameWindowsMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        alertsFrameWindowsMenu.click();
+        elementHelper.clickElement(alertsFrameWindowsMenu);
 
         WebElement browserWindowsMenu = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
-        browserWindowsMenu.click();
+        elementHelper.clickElement(browserWindowsMenu);
 
         WebElement newTab=driver.findElement(By.xpath("//button[text()='New Tab']"));
-        newTab.click();
+        elementHelper.clickElement(newTab);
 
-        System.out.println(driver.getCurrentUrl());
+        windowsHelper.getCurrentURL();
 
-        List<String> tabsList = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabsList.get(1));
+        windowsHelper.switchToWindow(1);
 
-        System.out.println(driver.getCurrentUrl());
+        windowsHelper.getCurrentURL();
 
-        driver.close();
+        elementHelper.closeElement();
 
-        driver.switchTo().window(tabsList.get(0));
+        windowsHelper.switchToWindow(0);
 
-        System.out.println(driver.getCurrentUrl());
+        windowsHelper.getCurrentURL();
 
         //Din cauza reclamei fortam site-ul sa acceseze un URL specific
         driver.navigate().to("https://demoqa.com/browser-windows");
@@ -43,33 +47,19 @@ public class WindowsTests extends SharedData {
         WebElement newWindow=driver.findElement(By.xpath("//button[text()='New Window']"));
         newWindow.click();
 
-        List<String> windowList = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(windowList.get(1));
+        windowsHelper.switchToWindow(1);
 
-        driver.manage().window().maximize();
+        windowsHelper.maximizeWindow();
 
-        System.out.println(driver.getCurrentUrl());
+        windowsHelper.getCurrentURL();
 
-        driver.close();
+        elementHelper.closeElement();
 
-        driver.switchTo().window(tabsList.get(0));
+        windowsHelper.switchToWindow(0);
 
-        System.out.println(driver.getCurrentUrl());
+        windowsHelper.getCurrentURL();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

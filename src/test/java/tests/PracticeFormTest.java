@@ -1,5 +1,8 @@
 package tests;
 
+import helperMethods.ElementHelper;
+import helperMethods.FormsHelper;
+import helperMethods.PageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -25,30 +28,25 @@ public class PracticeFormTest extends SharedData {
 
     public void testMethodd(){
 
+        ElementHelper elementHelper = new ElementHelper(driver);
+        PageHelper pageHelper = new PageHelper(driver);
+        FormsHelper formsHelper = new FormsHelper(driver);
+
         WebElement formsMenu = driver.findElement(By.xpath("//h5[text()='Forms']"));
-        formsMenu.click();
+        elementHelper.clickElement(formsMenu);
 
         WebElement practiceFormMenu = driver.findElement(By.xpath("//span[text()='Practice Form']"));
-        practiceFormMenu.click();
+        elementHelper.clickElement(practiceFormMenu);
 
         //Wait implicit
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        pageHelper.waitImplicit();
 
-        WebElement firstnameElement=driver.findElement(By.cssSelector("input[placeholder='First Name']"));
-        String firstNameValue="Satoru";
-        firstnameElement.sendKeys(firstNameValue);
+        formsHelper.firstNameValue="Gojo";
+        formsHelper.lastnameValue="Satoru";
+        formsHelper.emailValue="gojo.satoru@gmail.com";
+        formsHelper.mobileValue="2223334443";
 
-        WebElement lastnameElement=driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
-        String lastNameValue="Gojo";
-        lastnameElement.sendKeys(lastNameValue);
-
-        WebElement emailElement=driver.findElement(By.cssSelector("input[placeholder='name@example.com']"));
-        String emailValue="gojo.satoru@gmail.com";
-        emailElement.sendKeys(emailValue);
-
-        WebElement mobileElement=driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-        String mobileValue="2223334443";
-        mobileElement.sendKeys(mobileValue);
+        formsHelper.fillPracticeForm();
 
         WebElement subjectsElement=driver.findElement(By.id("subjectsInput"));
         List<String> subjectsValue = Arrays.asList("Arts","Accounting","Maths");
@@ -103,7 +101,7 @@ public class PracticeFormTest extends SharedData {
         cityElement.sendKeys(Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
-        submitElement.click();
+        elementHelper.clickElement(submitElement);
 
         //Wait explicit
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -114,17 +112,17 @@ public class PracticeFormTest extends SharedData {
         List<WebElement> tableValueList = driver.findElements(By.xpath("//table//td[2]"));
 
         Assert.assertEquals(tableDescriptionList.get(0).getText(),"Student Name","Student Name text is not displayed right in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(firstNameValue),"First Name is not displayed right in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(lastNameValue), "Last Name is not displayed right in the table");
+        Assert.assertTrue(tableValueList.get(0).getText().contains(formsHelper.firstNameValue),"First Name is not displayed right in the table");
+        Assert.assertTrue(tableValueList.get(0).getText().contains(formsHelper.lastnameValue), "Last Name is not displayed right in the table");
 
         Assert.assertEquals(tableDescriptionList.get(1).getText(), "Student Email","Email text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(1).getText(), emailValue,  "Email is not displayed right in the table");
+        Assert.assertEquals(tableValueList.get(1).getText(), formsHelper.emailValue,  "Email is not displayed right in the table");
 
         Assert.assertEquals(tableDescriptionList.get(2).getText(), "Gender","Gender text is not displayed right in the table");
         Assert.assertEquals(tableValueList.get(2).getText(), genderValue,"Gender is not displayed right in the table");
 
         Assert.assertEquals(tableDescriptionList.get(3).getText(), "Mobile","Mobile text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(3).getText(), mobileValue,"Mobile is not displayed right in the table");
+        Assert.assertEquals(tableValueList.get(3).getText(), formsHelper.mobileValue,"Mobile is not displayed right in the table");
 
         String actualSubjects = tableValueList.get(5).getText();
         for (String subject : subjectsValue) {
