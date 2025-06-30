@@ -1,8 +1,6 @@
 package helperMethods;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 public class ElementHelper {
     public WebDriver driver;
@@ -22,6 +20,18 @@ public class ElementHelper {
 
     public void closeElement(){
         driver.close();
+    }
+
+    public void printTextElement(WebElement element){
+        System.out.println(element.getText());
+    }
+
+    public void sendKeys(WebElement element, String value){
+        element.sendKeys(value);
+    }
+
+    public void pressElement(WebElement element, Keys value){
+        element.sendKeys(value);
     }
 
 }

@@ -5,20 +5,14 @@ import helperMethods.FormsHelper;
 import helperMethods.PageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.v135.heapprofiler.model.SamplingHeapProfile;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
-
 import java.io.File;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,25 +45,21 @@ public class PracticeFormTest extends SharedData {
         WebElement subjectsElement=driver.findElement(By.id("subjectsInput"));
         List<String> subjectsValue = Arrays.asList("Arts","Accounting","Maths");
         for (int index=0; index < subjectsValue.size(); index++){
-            subjectsElement.sendKeys(subjectsValue.get(index));
-            subjectsElement.sendKeys(Keys.ENTER);
+            elementHelper.sendKeys(subjectsElement, subjectsValue.get(index));
+            elementHelper.pressElement(subjectsElement, Keys.ENTER);
         }
-
-//        //ENTER
-//
-//        subjectsElement.sendKeys(Keys.ENTER);
 
         String genderValue="Male";
         List<WebElement> genderElemenetList = driver.findElements(By.cssSelector("div[id='genterWrapper']>div>div>label[class='custom-control-label']"));
         switch (genderValue){
             case "Male":
-                genderElemenetList.get(0).click();
+                elementHelper.clickElement(genderElemenetList.get(0));
                 break;
             case "Female":
-                genderElemenetList.get(1).click();
+                elementHelper.clickElement(genderElemenetList.get(1));
                 break;
             case "Other":
-                genderElemenetList.get(2).click();
+                elementHelper.clickElement(genderElemenetList.get(2));
                 break;
         }
 
@@ -77,7 +67,7 @@ public class PracticeFormTest extends SharedData {
         List<String> hobbiesValues = Arrays.asList("Music", "Sports");
         for(int index = 0; index<hobbiesElementList.size();index++){
             if(hobbiesValues.contains(hobbiesElementList.get(index).getText())){
-                hobbiesElementList.get(index).click();
+                elementHelper.clickElement(hobbiesElementList.get(index));
             }
         }
 
@@ -92,13 +82,13 @@ public class PracticeFormTest extends SharedData {
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue ="NCR";
-        stateInputElement.sendKeys(stateValue);
-        stateInputElement.sendKeys(Keys.ENTER);
+        elementHelper.sendKeys(stateInputElement, stateValue);
+        elementHelper.pressElement(stateInputElement, Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue ="Delhi";
-        cityElement.sendKeys(cityValue);
-        cityElement.sendKeys(Keys.ENTER);
+        elementHelper.sendKeys(cityElement, cityValue);
+        elementHelper.pressElement(cityElement, Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         elementHelper.clickElement(submitElement);
@@ -130,8 +120,8 @@ public class PracticeFormTest extends SharedData {
         }
 
         String actualHobbies = tableValueList.get(6).getText();
-        for (String hobbie : hobbiesValues) {
-            Assert.assertTrue(actualHobbies.contains(hobbie), "Hobbies '" + hobbie + "' is not displayed in the table");
+        for (String hobbies : hobbiesValues) {
+            Assert.assertTrue(actualHobbies.contains(hobbies), "Hobbies '" + hobbies + "' is not displayed in the table");
         }
 
         File fileF = new File(uploadValue);

@@ -29,15 +29,15 @@ public class FormsHelper extends SharedData {
     public String editDepartmentValue;
 
     public void fillWebTablesForm() {
-        sendKeys("firstName", firstNameValue);
-        sendKeys("lastName", lastnameValue);
-        sendKeys("userEmail", emailValue);
-        sendKeys("age", ageValue);
-        sendKeys("salary", salaryValue);
-        sendKeys("department", departmentValue);
+        sendKeysById("firstName", firstNameValue);
+        sendKeysById("lastName", lastnameValue);
+        sendKeysById("userEmail", emailValue);
+        sendKeysById("age", ageValue);
+        sendKeysById("salary", salaryValue);
+        sendKeysById("department", departmentValue);
     }
 
-    public void sendKeys(String id, String value) {
+    public void sendKeysById(String id, String value) {
         WebElement element = driver.findElement(By.id(id));
         element.sendKeys(value);
     }
@@ -45,6 +45,11 @@ public class FormsHelper extends SharedData {
     private void editSendKeys(String id, String value) {
         WebElement element = driver.findElement(By.id(id));
         element.clear();
+        element.sendKeys(value);
+    }
+
+    public void sendKeysCSS(String id, String value) {
+        WebElement element = driver.findElement(By.cssSelector(id));
         element.sendKeys(value);
     }
 
@@ -58,9 +63,9 @@ public class FormsHelper extends SharedData {
     }
 
     public void fillPracticeForm(){
-        sendKeys("input[placeholder='First Name']", firstNameValue);
-        sendKeys("input[placeholder='Last Name']", lastnameValue);
-        sendKeys("input[placeholder='name@example.com']", emailValue);
-        editSendKeys("input[placeholder='Mobile Number']", mobileValue);
+        sendKeysCSS("input[placeholder='First Name']", firstNameValue);
+        sendKeysCSS("input[placeholder='Last Name']", lastnameValue);
+        sendKeysCSS("input[placeholder='name@example.com']", emailValue);
+        sendKeysCSS("input[placeholder='Mobile Number']", mobileValue);
     }
 }

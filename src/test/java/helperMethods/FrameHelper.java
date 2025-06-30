@@ -1,6 +1,7 @@
 package helperMethods;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import sharedData.SharedData;
 
 public class FrameHelper extends SharedData {
@@ -10,11 +11,15 @@ public class FrameHelper extends SharedData {
         this.driver = driver;
     }
 
-    public void switchFrame (String text){
+    public void switchFrameString (String text){
         driver.switchTo().frame(text);
     }
 
-    public void switchParent(){
+    public void switchToParent(){
         driver.switchTo().parentFrame();
+    }
+
+    public void switchFrameElement(WebElement element){
+        driver.switchTo().frame(element);
     }
 }
