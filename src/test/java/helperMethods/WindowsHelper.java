@@ -19,7 +19,7 @@ public class WindowsHelper extends SharedData {
         System.out.println(driver.getCurrentUrl());
     }
 
-    public void switchToWindow(int tabIndex ){
+    public void switchToWindow(int tabIndex){
         List<String> tabsList = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabsList.get(tabIndex));
     }

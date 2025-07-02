@@ -26,7 +26,7 @@ public class WebTablesTest extends SharedData {
 
         List<WebElement> tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         int tableSize = 3;
-        Assert.assertEquals(tableList.size(),tableSize, "Expected table size: "+tableSize+" is not correct");
+        elementHelper.validateListSize(tableList,tableSize);
 
         //Identificam un element.
         //Un element se identifica printr-o variabila locala -> WebElement
@@ -47,14 +47,15 @@ public class WebTablesTest extends SharedData {
         elementHelper.clickJSElement(submitElement);
 
         tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even' or @class='rt-tr -odd']"));
-        Assert.assertEquals(tableList.size(),tableSize+1, "Expected table size is not correct");
-        
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.firstNameValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.lastnameValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.emailValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.ageValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.salaryValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.departmentValue));
+        elementHelper.validateListSize(tableList,tableSize+1);
+
+
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.firstNameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.lastnameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.emailValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.ageValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.salaryValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.departmentValue);
 
         //Edit functionality
 
@@ -74,14 +75,14 @@ public class WebTablesTest extends SharedData {
         elementHelper.clickJSElement(editsubmitElement);
 
         tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even' or @class='rt-tr -odd']"));
-        Assert.assertEquals(tableList.size(),tableSize+1, "Expected table size is not correct");
+        elementHelper.validateListSize(tableList,tableSize+1);
 
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.editFirstNameValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.editLastnameValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.editEmailValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.editAgeValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.editSalaryValue));
-        Assert.assertTrue(tableList.get(tableSize).getText().contains(formsHelper.editDepartmentValue));
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editFirstNameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editLastnameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editEmailValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editAgeValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editSalaryValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editDepartmentValue);
 
         //Delete Element
 
@@ -89,7 +90,7 @@ public class WebTablesTest extends SharedData {
         elementHelper.clickElement(deleteElement);
 
         tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even' or @class='rt-tr -odd']"));
-        Assert.assertEquals(tableList.size(),tableSize, "Expected table size: "+tableSize+" is not correct");
+        elementHelper.validateListSize(tableList,tableSize);
     }
 }
 

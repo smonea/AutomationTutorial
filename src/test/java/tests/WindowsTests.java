@@ -29,17 +29,11 @@ public class WindowsTests extends SharedData {
         WebElement newTab=driver.findElement(By.xpath("//button[text()='New Tab']"));
         elementHelper.clickElement(newTab);
 
-        windowsHelper.getCurrentURL();
-
         windowsHelper.switchToWindow(1);
-
-        windowsHelper.getCurrentURL();
 
         elementHelper.closeElement();
 
         windowsHelper.switchToWindow(0);
-
-        windowsHelper.getCurrentURL();
 
         //Din cauza reclamei fortam site-ul sa acceseze un URL specific
         driver.navigate().to("https://demoqa.com/browser-windows");
@@ -51,13 +45,9 @@ public class WindowsTests extends SharedData {
 
         windowsHelper.maximizeWindow();
 
-        windowsHelper.getCurrentURL();
-
         elementHelper.closeElement();
 
         windowsHelper.switchToWindow(0);
-
-        windowsHelper.getCurrentURL();
     }
 }
 
