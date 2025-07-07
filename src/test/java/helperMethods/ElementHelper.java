@@ -90,4 +90,20 @@ public class ElementHelper {
         wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
     }
 
+    public void sendKeysById(String id, String value) {
+        WebElement element = driver.findElement(By.id(id));
+        element.sendKeys(value);
+    }
+
+    private void editSendKeys(String id, String value) {
+        WebElement element = driver.findElement(By.id(id));
+        element.clear();
+        element.sendKeys(value);
+    }
+
+    public void sendKeysCSS(String id, String value) {
+        WebElement element = driver.findElement(By.cssSelector(id));
+        element.sendKeys(value);
+    }
+
 }

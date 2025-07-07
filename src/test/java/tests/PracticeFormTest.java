@@ -1,7 +1,6 @@
 package tests;
 
 import helperMethods.ElementHelper;
-import helperMethods.FormsHelper;
 import helperMethods.PageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -20,7 +19,6 @@ public class PracticeFormTest extends SharedData {
 
         ElementHelper elementHelper = new ElementHelper(driver);
         PageHelper pageHelper = new PageHelper(driver);
-        FormsHelper formsHelper = new FormsHelper(driver);
 
         WebElement formsMenu = driver.findElement(By.xpath("//h5[text()='Forms']"));
         elementHelper.clickElement(formsMenu);
@@ -31,12 +29,21 @@ public class PracticeFormTest extends SharedData {
         //Wait implicit
         pageHelper.waitImplicit();
 
-        formsHelper.firstNameValue="Gojo";
-        formsHelper.lastnameValue="Satoru";
-        formsHelper.emailValue="gojo.satoru@gmail.com";
-        formsHelper.mobileValue="2223334443";
+        WebElement firstnameElement=driver.findElement(By.cssSelector("input[placeholder='First Name']"));
+        String firstNameValue = "Satoru";
+        elementHelper.fillElement(firstnameElement,firstNameValue);
 
-        formsHelper.fillPracticeForm();
+        WebElement lastnameElement=driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
+        String lastNameValue = "Gojo";
+        elementHelper.fillElement(lastnameElement,lastNameValue);
+
+        WebElement emailElement=driver.findElement(By.cssSelector("input[placeholder='name@example.com']"));
+        String emailValue = "gojo.satoru@gmail.com";
+        elementHelper.fillElement(emailElement,emailValue);
+
+        WebElement mobileElement=driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
+        String mobileValue = "2223334443";
+        elementHelper.fillElement(mobileElement,mobileValue);
 
         WebElement subjectsElement=driver.findElement(By.id("subjectsInput"));
         List<String> subjectsValue = Arrays.asList("Arts","Accounting","Maths");
@@ -73,7 +80,7 @@ public class PracticeFormTest extends SharedData {
 
         WebElement adressElement = driver.findElement(By.id("currentAddress"));
         String adressValue="Strada 10";
-        adressElement.sendKeys(adressValue);
+        elementHelper.fillElement(adressElement,adressValue);
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue ="NCR";
@@ -90,17 +97,17 @@ public class PracticeFormTest extends SharedData {
         List<WebElement> tableValueList = driver.findElements(By.xpath("//table//td[2]"));
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(0),"Student Name");
-        elementHelper.validateElementContainsText(tableValueList.get(0), formsHelper.firstNameValue);
-        elementHelper.validateElementContainsText(tableValueList.get(0), formsHelper.lastnameValue);
+        elementHelper.validateElementContainsText(tableValueList.get(0), firstnameElement.getText());
+        elementHelper.validateElementContainsText(tableValueList.get(0), lastnameElement.getText());
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(1),"Student Email");
-        elementHelper.validateElementEqualsText(tableValueList.get(1),formsHelper.emailValue);
+        elementHelper.validateElementEqualsText(tableValueList.get(1),emailElement.getText());
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(2),"Gender");
         elementHelper.validateElementEqualsText(tableValueList.get(2),genderValue);
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(3),"Mobile");
-        elementHelper.validateElementEqualsText(tableValueList.get(3),formsHelper.mobileValue);
+        elementHelper.validateElementEqualsText(tableValueList.get(3),mobileElement.getText());
 
         String actualSubjects = tableValueList.get(5).getText();
         elementHelper.validateElementEqualsText(tableDescriptionList.get(5),"Subjects");

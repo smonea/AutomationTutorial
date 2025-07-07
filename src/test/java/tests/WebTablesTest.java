@@ -1,10 +1,8 @@
 package tests;
 
 import helperMethods.ElementHelper;
-import helperMethods.FormsHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
 
@@ -16,7 +14,6 @@ public class WebTablesTest extends SharedData {
     public void testMethod(){
 
         ElementHelper elementHelper = new ElementHelper(driver);
-        FormsHelper formsHelper = new FormsHelper(driver);
 
         WebElement elementsMenu = driver.findElement(By.xpath("//h5[text()='Elements']"));
         elementHelper.clickElement(elementsMenu);
@@ -34,14 +31,29 @@ public class WebTablesTest extends SharedData {
         WebElement addElement=driver.findElement(By.id("addNewRecordButton"));
         elementHelper.clickElement(addElement);
 
-        formsHelper.firstNameValue="Gojo";
-        formsHelper.lastnameValue="Satoru";
-        formsHelper.emailValue="gojo.satoru@gmail.com";
-        formsHelper.ageValue="27";
-        formsHelper.salaryValue="212221";
-        formsHelper.departmentValue="Test";
+        WebElement firstnameElement=driver.findElement(By.id("firstName"));
+        String firstNameValue = "Satoru";
+        elementHelper.fillElement(firstnameElement,firstNameValue);
 
-        formsHelper.fillWebTablesForm();
+        WebElement lastnameElement=driver.findElement(By.id("lastName"));
+        String lastNameValue = "Gojo";
+        elementHelper.fillElement(lastnameElement,lastNameValue);
+
+        WebElement emailElement=driver.findElement(By.id("userEmail"));
+        String emailValue = "gojo.satoru@gmail.com";
+        elementHelper.fillElement(emailElement,emailValue);
+
+        WebElement ageElement=driver.findElement(By.id("age"));
+        String ageValue="27";
+        elementHelper.fillElement(ageElement,ageValue);
+
+        WebElement salaryElement=driver.findElement(By.id("salary"));
+        String salaryValue="33445455";
+        elementHelper.fillElement(salaryElement,salaryValue);
+
+        WebElement departmentElement=driver.findElement(By.id("department"));
+        String departmentValue="Testing";
+        elementHelper.fillElement(departmentElement,departmentValue);
 
         WebElement submitElement=driver.findElement(By.id("submit"));
         elementHelper.clickJSElement(submitElement);
@@ -50,26 +62,41 @@ public class WebTablesTest extends SharedData {
         elementHelper.validateListSize(tableList,tableSize+1);
 
 
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.firstNameValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.lastnameValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.emailValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.ageValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.salaryValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.departmentValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),firstNameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),lastNameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),emailValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),ageValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),salaryValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),departmentValue);
 
         //Edit functionality
 
         WebElement editElement=driver.findElement(By.id("edit-record-4"));
         elementHelper.clickElement(editElement);
 
-        formsHelper.editFirstNameValue="Gojo1";
-        formsHelper.editLastnameValue="Satoru2";
-        formsHelper.editEmailValue="gojo1.satoru2@gmail.com";
-        formsHelper.editAgeValue="30";
-        formsHelper.editSalaryValue="11111111";
-        formsHelper.editDepartmentValue="Dev";
+        WebElement editfirstnameElement=driver.findElement(By.id("firstName"));
+        String editfirstnameValue="Gojo1";
+        elementHelper.clearFillElement(editfirstnameElement,editfirstnameValue);
 
-        formsHelper.editFillWebTablesForm();
+        WebElement editlastnameElement=driver.findElement(By.id("lastName"));
+        String editlastnameValue="Satoru2";
+        elementHelper.clearFillElement(editlastnameElement,editlastnameValue);
+
+        WebElement edituserEmailElement=driver.findElement(By.id("userEmail"));
+        String edituserEmailValue="gojo1.satoru2@gmail.com";
+        elementHelper.clearFillElement(edituserEmailElement,edituserEmailValue);
+
+        WebElement editageElement=driver.findElement(By.id("age"));
+        String editageValue="31";
+        elementHelper.clearFillElement(editageElement,editageValue);
+
+        WebElement editsalaryElement=driver.findElement(By.id("salary"));
+        String editsalaryValue="3333333";
+        elementHelper.clearFillElement(editsalaryElement,editsalaryValue);
+
+        WebElement editdepartmentElement=driver.findElement(By.id("department"));
+        String editdepartmentValue="Sorcerer";
+        elementHelper.clearFillElement(editdepartmentElement,editdepartmentValue);
 
         WebElement editsubmitElement=driver.findElement(By.id("submit"));
         elementHelper.clickJSElement(editsubmitElement);
@@ -77,12 +104,12 @@ public class WebTablesTest extends SharedData {
         tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         elementHelper.validateListSize(tableList,tableSize+1);
 
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editFirstNameValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editLastnameValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editEmailValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editAgeValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editSalaryValue);
-        elementHelper.validateElementContainsText(tableList.get(tableSize),formsHelper.editDepartmentValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),editfirstnameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),editlastnameValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),edituserEmailValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),editageValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),editsalaryValue);
+        elementHelper.validateElementContainsText(tableList.get(tableSize),editdepartmentValue);
 
         //Delete Element
 
