@@ -90,6 +90,11 @@ public class ElementHelper {
         wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
     }
 
+    public void waitAlert(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
+
     public void sendKeysById(String id, String value) {
         WebElement element = driver.findElement(By.id(id));
         element.sendKeys(value);

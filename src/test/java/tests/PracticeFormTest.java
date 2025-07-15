@@ -76,7 +76,7 @@ public class PracticeFormTest extends SharedData {
         WebElement uploadElement = driver.findElement(By.id("uploadPicture"));
         String uploadValue = "src/test/resources/Map_alWnRyQmNq - Copy.png";
         File file = new File(uploadValue);
-        uploadElement.sendKeys(file.getAbsolutePath());
+        elementHelper.fillElement(uploadElement, file.getAbsolutePath());
 
         WebElement adressElement = driver.findElement(By.id("currentAddress"));
         String adressValue="Strada 10";
