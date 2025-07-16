@@ -3,10 +3,6 @@ package tests;
 import Pages.AlertFrameWindowPage;
 import Pages.IndexPage;
 import Pages.WindowsPage;
-import helperMethods.ElementHelper;
-import helperMethods.WindowsHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
 

@@ -14,6 +14,8 @@ public class IndexPage extends BasePage{
     public WebElement alertsFrameWindowsMenu;
     @FindBy(xpath = "//h5[text()='Elements']")
     public WebElement elementsMenu;
+    @FindBy(xpath = "//h5[text()='Forms']")
+    public WebElement formsMenu;
 
 
     public void interactWithAlertsFrameWindowMenu(){
@@ -22,5 +24,9 @@ public class IndexPage extends BasePage{
 
     public void interactWithElementsMenu(){
         elementHelper.clickElement(elementsMenu);
+    }
+
+    public void interactWithFormsMenu(){
+        elementHelper.clickElement(formsMenu);
     }
 }
