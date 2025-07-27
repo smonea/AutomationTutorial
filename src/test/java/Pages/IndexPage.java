@@ -1,5 +1,6 @@
 package Pages;
 
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,10 +21,12 @@ public class IndexPage extends BasePage{
 
     public void interactWithAlertsFrameWindowMenu(){
         elementHelper.clickJSElement(alertsFrameWindowsMenu);
+        LoggerUtility.infoLog("The user clicks on Alerts Frame Window Menu");
     }
 
     public void interactWithElementsMenu(){
         elementHelper.clickElement(elementsMenu);
+
     }
 
     public void interactWithFormsMenu(){
