@@ -11,13 +11,13 @@ public class WindowsTests extends SharedData {
     @Test
     public void testMethod() {
 
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithAlertsFrameWindowMenu();
 
-        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(driver);
+        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(getDriver());
         alertFrameWindowPage.interactWithBrowserWindowsSubMenu();
 
-        WindowsPage windowsPage = new WindowsPage(driver);
+        WindowsPage windowsPage = new WindowsPage(getDriver());
         windowsPage.dealWithNewTab();
 
         //Din cauza reclamei fortam site-ul sa acceseze un URL specific

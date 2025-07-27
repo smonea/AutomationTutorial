@@ -11,9 +11,9 @@ public class WindowsPage extends BasePage{
     }
 
     @FindBy(xpath = "//button[text()='New Tab']")
-    public WebElement newTab;
+    private WebElement newTab;
     @FindBy(xpath = "//button[text()='New Window']")
-    public WebElement newWindow;
+    private WebElement newWindow;
 
     public void dealWithNewTab(){
         elementHelper.clickElement(newTab);

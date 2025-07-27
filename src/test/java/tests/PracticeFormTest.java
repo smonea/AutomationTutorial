@@ -3,6 +3,7 @@ package tests;
 import Pages.FormsPage;
 import Pages.IndexPage;
 import Pages.PracticeFormPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
 
@@ -15,10 +16,10 @@ public class PracticeFormTest extends SharedData {
 
     public void testMethodd(){
 
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithFormsMenu();
 
-        FormsPage formsPage = new FormsPage(driver);
+        FormsPage formsPage = new FormsPage(getDriver());
         formsPage.interactWithPracticeFormMenu();
 
         String firstNameValue = "Satoru";
@@ -33,10 +34,11 @@ public class PracticeFormTest extends SharedData {
         String stateValue ="NCR";
         String cityValue ="Delhi";
 
-        PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
+        PracticeFormPage practiceFormPage = new PracticeFormPage(getDriver());
         practiceFormPage.fillEntirePracticeForm(firstNameValue,lastNameValue,emailValue,mobileValue,subjectsValue,genderValue,hobbiesValues,uploadValue,adressValue,stateValue,cityValue);
 
         practiceFormPage.validateFormValues(firstNameValue, lastNameValue, emailValue, genderValue, mobileValue, subjectsValue, hobbiesValues, uploadValue, adressValue, stateValue, cityValue);
+
     }
 }
 

@@ -13,44 +13,44 @@ public class WebTablePage extends BasePage{
     }
 
     @FindBy(xpath = "//div[@class='rt-tr -even' or @class='rt-tr -odd']")
-    public List<WebElement> tableList;
+    private List<WebElement> tableList;
 
     @FindBy(id = "addNewRecordButton")
-    public WebElement addElement;
+    private WebElement addElement;
 
     @FindBy(id = "firstName")
-    public WebElement firstnameElement;
+    private WebElement firstnameElement;
     @FindBy(id = "lastName")
-    public WebElement lastnameElement;
+    private WebElement lastnameElement;
     @FindBy(id = "userEmail")
-    public WebElement emailElement;
+    private WebElement emailElement;
     @FindBy(id = "age")
-    public WebElement ageElement;
+    private WebElement ageElement;
     @FindBy(id = "salary")
-    public WebElement salaryElement;
+    private WebElement salaryElement;
     @FindBy(id = "department")
-    public WebElement departmentElement;
+    private WebElement departmentElement;
     @FindBy(id = "submit")
-    public WebElement submitElement;
+    private WebElement submitElement;
 
     @FindBy(id = "edit-record-4")
-    public WebElement editElement;
+    private WebElement editElement;
 
     @FindBy(id = "firstName")
-    public WebElement editfirstnameElement;
+    private WebElement editfirstnameElement;
     @FindBy(id = "lastName")
-    public WebElement editlastnameElement;
+    private WebElement editlastnameElement;
     @FindBy(id = "userEmail")
-    public WebElement edituserEmailElement;
+    private WebElement edituserEmailElement;
     @FindBy(id = "age")
-    public WebElement editageElement;
+    private WebElement editageElement;
     @FindBy(id = "salary")
-    public WebElement editsalaryElement;
+    private WebElement editsalaryElement;
     @FindBy(id = "department")
-    public WebElement editdepartmentElement;
+    private WebElement editdepartmentElement;
 
     @FindBy(id = "delete-record-4")
-    public WebElement deleteElement;
+    private WebElement deleteElement;
 
     public void addNewEntry(int tableSize, String firstNameValue, String lastNameValue, String emailValue,String ageValue,String salaryValue, String departmentValue){
 

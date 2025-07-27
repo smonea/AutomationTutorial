@@ -12,9 +12,9 @@ public class FramesPage extends BasePage{
     }
 
     @FindBy(id = "sampleHeading")
-    public WebElement firstBlockElement;
+    private WebElement firstBlockElement;
     @FindBy(id = "sampleHeading")
-    public WebElement secondBlockElement;
+    private WebElement secondBlockElement;
 
     public void dealWithBigIFrame (){
         frameHelper.switchFrameString("frame1");

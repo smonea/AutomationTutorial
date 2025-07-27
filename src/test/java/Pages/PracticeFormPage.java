@@ -15,46 +15,46 @@ public class PracticeFormPage extends BasePage{
     }
 
     @FindBy(css = "input[placeholder='First Name']")
-    public WebElement firstnameElement;
+    private WebElement firstnameElement;
 
     @FindBy(css = "input[placeholder='Last Name']")
-    public WebElement lastnameElement;
+    private WebElement lastnameElement;
 
     @FindBy(css = "input[placeholder='name@example.com']")
-    public WebElement emailElement;
+    private WebElement emailElement;
 
     @FindBy(css = "input[placeholder='Mobile Number']")
-    public WebElement mobileElement;
+    private WebElement mobileElement;
 
     @FindBy(id = "subjectsInput")
-    public WebElement subjectsElement;
+    private WebElement subjectsElement;
 
     @FindBy(css = "div[id='genterWrapper']>div>div>label[class='custom-control-label']")
-    public List<WebElement> genderElementList;
+    private List<WebElement> genderElementList;
 
     @FindBy(css = "div[id='hobbiesWrapper']>div>div>label[class='custom-control-label']")
-    public List<WebElement> hobbiesElementList;
+    private List<WebElement> hobbiesElementList;
 
     @FindBy(id = "uploadPicture")
-    public WebElement uploadElement;
+    private WebElement uploadElement;
 
     @FindBy(id = "currentAddress")
-    public WebElement adressElement;
+    private WebElement adressElement;
 
     @FindBy(id = "react-select-3-input")
-    public WebElement stateInputElement;
+    private WebElement stateInputElement;
 
     @FindBy(id = "react-select-4-input")
-    public WebElement cityElement;
+    private WebElement cityElement;
 
     @FindBy(id = "submit")
-    public WebElement submitElement;
+    private WebElement submitElement;
 
     @FindBy(xpath = "//table//td[1]")
-    public List<WebElement> tableDescriptionList;
+    private List<WebElement> tableDescriptionList;
 
     @FindBy(xpath = "//table//td[2]")
-    public List<WebElement> tableValueList;
+    private List<WebElement> tableValueList;
 
     public void fillEntirePracticeForm(String firstNameValue, String lastNameValue, String emailValue, String mobileValue, List<String> subjectsValue, String genderValue,
                                        List<String> hobbiesValues, String uploadValue, String adressValue, String stateValue,

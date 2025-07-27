@@ -11,10 +11,10 @@ public class WebTablesTest extends SharedData {
     @Test
     public void testMethod(){
 
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithElementsMenu();
 
-        ElementsPage elementsPage = new ElementsPage(driver);
+        ElementsPage elementsPage = new ElementsPage(getDriver());
         elementsPage.interactWithWebTablesSubMenu();
 
         int tableSize = 3;
@@ -31,7 +31,7 @@ public class WebTablesTest extends SharedData {
         String editsalaryValue="3333333";
         String editdepartmentValue="Sorcerer";
 
-        WebTablePage webTablePage = new WebTablePage(driver);
+        WebTablePage webTablePage = new WebTablePage(getDriver());
         webTablePage.addNewEntry(tableSize,firstNameValue,lastNameValue,emailValue,ageValue,salaryValue,departmentValue);
 
         webTablePage.editNewEntry(tableSize, editfirstnameValue, editlastnameValue, edituserEmailValue,editageValue,editsalaryValue,editdepartmentValue);

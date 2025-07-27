@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class SharedData {
 
-    public WebDriver driver;
+    private WebDriver driver;
 
     @BeforeMethod
 
@@ -32,5 +32,9 @@ public class SharedData {
 
     public void clearEnvironment(){
         driver.quit();
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }
