@@ -6,8 +6,6 @@ import Pages.IndexPage;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
 
-import java.time.Duration;
-
 public class AlertsTest extends SharedData {
 
     @Test

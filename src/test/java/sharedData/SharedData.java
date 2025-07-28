@@ -3,6 +3,7 @@ package sharedData;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -13,16 +14,11 @@ public class SharedData {
     private WebDriver driver;
 
     @BeforeMethod
-
     public void prepareEnvironment (){
 
         driver = new EdgeDriver();
 
-        //Accesam o pagina specifica.
-
         driver.get("https://demoqa.com");
-
-        //Facem browserul in modul maximize.
 
         driver.manage().window().maximize();
 
@@ -32,8 +28,11 @@ public class SharedData {
     }
 
     @AfterMethod
+    public void clearEnvironment(ITestResult result){
+        if(result.getStatus()==ITestResult.FAILURE){
+            LoggerUtility.errorLog(result.getThrowable().getMessage());
+        }
 
-    public void clearEnvironment(){
         driver.quit();
 
         LoggerUtility.finishTest(this.getClass().getSimpleName());
