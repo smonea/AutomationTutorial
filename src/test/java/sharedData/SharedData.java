@@ -3,6 +3,7 @@ package sharedData;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,12 +16,19 @@ public class SharedData {
 
     @BeforeMethod
     public void prepareEnvironment (){
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("window-size=1920,1080");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless=new");
+        options.addArguments("--incognito");
 
-        driver = new EdgeDriver();
+        driver = new EdgeDriver(options);
 
         driver.get("https://demoqa.com");
 
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 

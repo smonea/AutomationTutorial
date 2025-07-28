@@ -10,25 +10,25 @@ public class LoggerUtility {
     //Start test
 
     public static void startTest(String testName){
-        logger.info("===== Execution started: "+testName+" =====");
+        logger.info(Thread.currentThread().getName()+" ===== Execution started: "+testName+" =====");
     }
 
     //Info step
 
     public static void infoLog(String message){
-        logger.info(message);
+        logger.info(Thread.currentThread().getName()+" "+message);
     }
 
     //Error step
 
     public static void errorLog(String message){
-        logger.error(message);
+        logger.error(Thread.currentThread().getName()+" "+message);
     }
 
     //Finish test
 
     public static void finishTest(String testName){
-        logger.info("===== Execution finished: "+testName+" =====");
+        logger.info(Thread.currentThread().getName()+" ===== Execution finished: "+testName+" =====");
     }
 
 }
