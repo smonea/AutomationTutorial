@@ -15,7 +15,7 @@ public class SharedData {
     public void prepareEnvironment (){
         LoggerUtility.startTest(this.getClass().getSimpleName());
 
-        browser = "Edge";
+        browser = System.getProperty("browser");
         switch (browser){
             case "Chrome":
                 ChromeBrowser chromeBrowser = new ChromeBrowser();
