@@ -29,6 +29,7 @@ public class WindowsPage extends BasePage{
 
     public void dealWithNewWindow(){
         newWindow.click();
+//        elementHelper.clickJSElement(newWindow);
         LoggerUtility.infoLog("The user clicks on new window button");
         windowsHelper.switchToWindow(1);
         LoggerUtility.infoLog("The user switches on second window open");
