@@ -3,16 +3,16 @@ package tests;
 import Pages.FormsPage;
 import Pages.IndexPage;
 import Pages.PracticeFormPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
+import suite.Suite;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class PracticeFormTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.FORMS_SUITE})
 
     public void testMethodd(){
 

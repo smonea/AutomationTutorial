@@ -5,10 +5,11 @@ import Pages.IndexPage;
 import Pages.WebTablePage;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
+import suite.Suite;
 
 public class WebTablesTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.ELEMENTS_SUITE})
     public void testMethod(){
 
         IndexPage indexPage = new IndexPage(getDriver());

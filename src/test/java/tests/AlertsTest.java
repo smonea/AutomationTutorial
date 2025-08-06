@@ -5,10 +5,11 @@ import Pages.AlertPage;
 import Pages.IndexPage;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
+import suite.Suite;
 
 public class AlertsTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE,"@Sanity","@AlertWindowFrame"})
     public void testMethod() {
 
         IndexPage indexPage = new IndexPage(getDriver());
